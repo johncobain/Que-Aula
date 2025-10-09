@@ -1,5 +1,5 @@
 import { classNames } from '../../../../utils/functions/classNames'
-import { IClassTag } from '../../form.Interface'
+import { IClassTag } from './classTag.Interface'
 
 export const ClassTag = ({
   selected = false,

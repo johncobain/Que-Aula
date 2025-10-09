@@ -43,10 +43,22 @@
     }
 
     &__subtitle {
-      border-bottom: 1px solid var.$divider-color;
-      padding: 0.5rem 0;
-      font-weight: 600;
+      &__container {
+        border-bottom: 1px solid var.$divider-color;
+        padding: 0.5rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
       color: rgb(136, 165, 185);
+      font-weight: 600;
+    }
+
+    &__switcher {
+      position: absolute;
+      right: 0;
     }
 
     &__tag__container {

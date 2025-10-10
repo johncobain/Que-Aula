@@ -1,5 +1,5 @@
-@use '../../style/variables' as var;
-@use '../../style/mixins.scss' as mixin;
+@use "../../style/variables" as var;
+@use "../../style/mixins.scss" as mixin;
 
 .form {
   text-align: center;
@@ -52,8 +52,9 @@
         position: relative;
       }
 
-      color: rgb(136, 165, 185);
-      font-weight: 600;
+      color: var.$blue-light-gray;
+      font-weight: 500;
+      letter-spacing: 1px;
     }
 
     &__switcher {
@@ -61,15 +62,62 @@
       right: 0;
     }
 
-    &__tag__container {
+    &__classListItem {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      padding: 1rem 0;
+      gap: 14px;
+      border-right: 1px solid var.$divider-color;
+      align-items: center;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.85;
+        border-right: 1px solid var.$emphasis-divider-color;
+      }
+
+      &__title {
+        color: var.$blue-gray;
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 600;
+
+        &--selected {
+          color: var.$blue-light-gray;
+        }
+      }
+
+      &__subtitle {
+        color: var.$blue-weak-emphasis;
+        font-size: 10px;
+        line-height: 12px;
+        font-weight: 500;
+      }
+
+      &__content {
+        display: grid;
+        text-align: left;
+        gap: 2px;
+      }
+
+      &--selected {
+        border-right: 1px solid var.$blue-gray;
+      }
     }
 
     &__tag {
+      &__container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 1rem 0;
+
+        &--detailed {
+          padding: 16px;
+          gap: 14px;
+          flex-direction: column;
+        }
+      }
+
       min-width: 72px;
       font-size: 0.85rem;
       user-select: none;
@@ -84,8 +132,7 @@
       letter-spacing: 1px;
       font-weight: 400;
       cursor: pointer;
-      transition: background-color 0.1s ease, color 0.1s ease,
-        font-weight 0.1s ease;
+      transition: background-color 0.1s ease, color 0.1s ease, font-weight 0.1s ease;
 
       &--selected {
         color: var.$blue-darker;

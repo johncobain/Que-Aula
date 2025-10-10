@@ -185,35 +185,9 @@
     position: absolute;
     top: 3px;
     right: 3px;
-    width: 10px;
-    height: 10px;
-    border-radius: 2px;
-    box-sizing: border-box;
-    color: var.$blue-darker;
-    transition: border 0.2s ease, background-color 0.2s ease;
 
-    @include mixin.desktopStyle() {
-      width: 12px;
-      height: 12px;
-    }
-
-    &--default {
-      background-color: var.$blue-darker;
-      border: 1px solid var.$divider-color;
-    }
-
-    &--selected {
-      background-color: var.$blue-light-gray;
-      border: 1px solid var.$blue-light-gray;
-
-      &:after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-image: url(../../assets/check.svg);
-      }
+    &--disabled {
+      display: none;
     }
   }
 

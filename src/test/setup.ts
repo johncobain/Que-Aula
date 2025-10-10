@@ -1,26 +1,39 @@
-import '@testing-library/jest-dom'
-import { vi } from 'vitest'
-import 'vitest-canvas-mock'
+import "@testing-library/jest-dom";
+import { vi } from "vitest";
+import "vitest-canvas-mock";
 
 const localStorageMock = (() => {
-    let store: Record<string, string> = {}
-    return {
-        getItem: (key: string) => store[key] || null,
-        setItem: (key: string, value: string) => {
-            store[key] = value.toString()
-        },
-        removeItem: (key: string) => {
-            delete store[key]
-        },
-        clear: () => {
-            store = {}
-        },
-    }
-})()
+  let store: Record<string, string> = {};
+  return {
+    getItem: (key: string) => store[key] || null,
+    setItem: (key: string, value: string) => {
+      store[key] = value.toString();
+    },
+    removeItem: (key: string) => {
+      delete store[key];
+    },
+    clear: () => {
+      store = {};
+    },
+  };
+})();
 
-Object.defineProperty(window, 'localStorage', {
-    value: localStorageMock,
-})
+Object.defineProperty(window, "localStorage", {
+  value: localStorageMock,
+});
 
-window.fetch = vi.fn()
+window.fetch = vi.fn();
 
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: vi.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(), // deprecated
+    removeListener: vi.fn(), // deprecated
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});

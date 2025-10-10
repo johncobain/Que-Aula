@@ -1,5 +1,6 @@
 import "./classItem.style.scss";
 import { IClassItemProps } from "./classItem.Interface";
+import Checkbox from "../checkbox/checkbox";
 
 const ClassItem = ({ data, loading, onStateChange = () => {} }: IClassItemProps) => {
   if (loading || !data) return <div className="class-item shimmer" />;
@@ -36,7 +37,9 @@ const ClassItem = ({ data, loading, onStateChange = () => {} }: IClassItemProps)
       <div
         onClick={handleCheckboxClick}
         className={`class-item__checkbox class-item__checkbox--${state}`}
-      ></div>
+      >
+        <Checkbox selected={state === "selected"} size="small" />
+      </div>
       <div className="class-item__content">
         <h3 className="class-item__title">{name}</h3>
         <p className="class-item__description">{description}</p>

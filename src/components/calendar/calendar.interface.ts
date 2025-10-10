@@ -6,7 +6,7 @@ export interface ICalendar {
 }
 
 export interface IClasses {
-  day: string;
+  day?: string;
   classes: IClassesData["classes"];
 }
 

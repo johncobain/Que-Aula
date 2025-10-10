@@ -1,7 +1,7 @@
 import { IClassesData } from "../types/dataClasses.interface";
 
 export interface IClasses {
-  day: string;
+  day?: string;
   classes: IClassesData["classes"];
 }
 export interface IAppContextType {

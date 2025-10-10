@@ -69,6 +69,10 @@
       align-items: center;
       cursor: pointer;
 
+      span {
+        color: var.$green;
+      }
+
       @include mixin.desktopStyle() {
         &:hover {
           opacity: 0.85;
@@ -120,6 +124,8 @@
         }
       }
 
+      display: flex;
+      gap: 4px;
       min-width: 72px;
       font-size: 0.85rem;
       user-select: none;
@@ -131,10 +137,18 @@
       justify-content: center;
       border-radius: 5px;
       box-shadow: 0 0 5px -1px black;
-      letter-spacing: 1px;
-      font-weight: 400;
       cursor: pointer;
       transition: background-color 0.1s ease, color 0.1s ease, font-weight 0.1s ease;
+      letter-spacing: 1px;
+
+      &__class {
+        font-weight: 600;
+        color: var.$blue-weak-emphasis;
+
+        &--selected {
+          color: var.$blue;
+        }
+      }
 
       &--selected {
         color: var.$blue-darker;

@@ -88,7 +88,8 @@ export const ClassesContainer = ({
                     />
                   ) : (
                     <ClassTag
-                      title={`${classData.name} ${classInfo.whichClass}`}
+                      title={classData.name}
+                      whichClass={classInfo.whichClass}
                       key={`${i}${classInfo.whichClass}`}
                       selected={classData.classes.some(
                         (cls) => cls.whichClass === classInfo.whichClass && cls.selected

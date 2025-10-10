@@ -20,7 +20,7 @@ export const ClassTag = ({
   });
 
   return (
-    <div className={tagClasses} onClick={onClick}>
+    <div className={tagClasses} onClick={onClick} data-testid="classTag">
       <span className="form__classes__tag__title">{title} </span>
       {whichClass && <span className={tagSpanClasses}>{whichClass}</span>}
     </div>

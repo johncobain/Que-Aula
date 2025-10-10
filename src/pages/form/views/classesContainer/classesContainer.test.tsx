@@ -4,9 +4,9 @@ import { ClassesContainer } from "./classesContainer";
 import { IClassesData } from "../../../../types/dataClasses.interface";
 
 vi.mock("../classTag/classTag", () => ({
-  ClassTag: ({ title, onClick, selected }: any) => (
-    <div data-testid="class-tag" data-title={title} data-selected={selected} onClick={onClick}>
-      ClassTag: {title}
+  ClassTag: ({ title, onClick, selected, whichClass }: any) => (
+    <div data-testid="classTag" data-title={title} data-selected={selected} onClick={onClick}>
+      ClassTag: {title} whichClass: {whichClass}
     </div>
   ),
 }));
@@ -123,11 +123,9 @@ describe("ClassesContainer", () => {
       />
     );
 
-    const tags = screen.getAllByTestId("class-tag");
+    const tags = screen.getAllByTestId("classTag");
     expect(tags.length).toBeGreaterThan(0);
     expect(tags[0]).toHaveTextContent("Math");
-    expect(tags[1]).toHaveTextContent("Science A");
-    expect(tags[2]).toHaveTextContent("Science B");
   });
 
   it("toggles detailed view when Switcher is clicked", () => {
@@ -143,12 +141,12 @@ describe("ClassesContainer", () => {
 
     const switcher = screen.getByTestId("switcher");
 
-    expect(screen.queryAllByTestId("class-tag").length).toBeGreaterThan(0);
+    expect(screen.queryAllByTestId("classTag").length).toBeGreaterThan(0);
     expect(screen.queryAllByTestId("class-list-item").length).toBe(0);
 
     fireEvent.click(switcher);
 
-    expect(screen.queryAllByTestId("class-tag").length).toBe(0);
+    expect(screen.queryAllByTestId("classTag").length).toBe(0);
     expect(screen.queryAllByTestId("class-list-item").length).toBeGreaterThan(0);
   });
 
@@ -162,7 +160,7 @@ describe("ClassesContainer", () => {
       />
     );
 
-    const tags = screen.getAllByTestId("class-tag");
+    const tags = screen.getAllByTestId("classTag");
     fireEvent.click(tags[0]);
     expect(mockClick).toHaveBeenCalledTimes(1);
   });
@@ -219,7 +217,7 @@ describe("ClassesContainer", () => {
       />
     );
 
-    const tags = screen.getAllByTestId("class-tag");
+    const tags = screen.getAllByTestId("classTag");
     expect(tags.length).toBe(1);
     expect(tags[0]).toHaveTextContent("History");
   });

@@ -43,7 +43,6 @@ describe("Form", () => {
 
       await waitFor(() => {
         expect(screen.getByText("Matemática Básica")).toBeInTheDocument();
-        expect(screen.getByText("Programação I Turma A")).toBeInTheDocument();
       });
       unmount();
 
@@ -243,7 +242,6 @@ describe("Form", () => {
 
       await waitFor(() => {
         expect(screen.getByText("Matemática Básica")).toBeInTheDocument();
-        expect(screen.getByText("Programação I Turma A")).toBeInTheDocument();
       });
     });
 

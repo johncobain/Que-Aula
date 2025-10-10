@@ -2,9 +2,15 @@
 
 # Changelog
 
-### Versão atual: 2.6.1
+### Versão atual: 2.7.0
 
 </div>
+
+## 2.7.0 - 09/10/2025
+
+- Criação de Pipeline para rodar testes e coverage no projeto em todas as pull requests.
+- Correção de bug que não mostrava o dia da semana nos sábados e domingos.
+- Equalizar footer com o figma
 
 ## 2.6.1 - 29/09/2025
 

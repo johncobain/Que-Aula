@@ -2,7 +2,7 @@
   "name": "que-aula",
   "type": "module",
   "private": true,
-  "version": "2.6.1",
+  "version": "2.7.0",
   "scripts": {
     "start": "vite",
     "dev": "vite",

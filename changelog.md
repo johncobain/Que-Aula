@@ -8,9 +8,8 @@
 
 ## 2.7.0 - 09/10/2025
 
-- Criação de Pipeline para rodar testes e coverage no projeto em todas as pull requests.
-- Correção de bug que não mostrava o dia da semana nos sábados e domingos.
-- Equalizar footer com o figma
+- Criaçao da opção de ter aulas mais descritivas no formulário
+- Melhora na hierarquia visual do calendário
 
 ## 2.6.1 - 29/09/2025
 

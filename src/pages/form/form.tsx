@@ -61,22 +61,6 @@ const Form = () => {
       return data;
     });
 
-    // const newClasses = classesData.map((data) => {
-    //   if (data.name === selectedClass) {
-    //     return {
-    //       ...data,
-    //       classes: data.classes.map((classData) => {
-    //         const isClickedClass = classData.whichClass === whichClass;
-    //         if (!selectedClass.multiClass || isClickedClass) {
-    //           return { ...classData, selected: !classData.selected };
-    //         }
-    //         return classData;
-    //       }),
-    //     };
-    //   }
-    //   return data;
-    // });
-
     setClassesData(newClasses);
   };
 

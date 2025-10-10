@@ -1,9 +1,9 @@
 import { Fragment, useEffect, useState } from "react";
 import "./form.style.scss";
-import { IClassesData } from "../../types/dataClasses.interface";
+import { IClassesData, IClassesDataEach } from "../../types/dataClasses.interface";
 import { version } from "../../../package.json";
 import { useClasses } from "../../hooks/useClasses";
-import { ClassTag } from "./views/classTag";
+import { ClassTag } from "./views/classTag/classTag";
 import { classNames } from "../../utils/functions/classNames";
 import Warning from "../../components/warning/warning";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ import { Preview } from "../../components/preview/preview";
 import { useAppContext } from "../../context/AppContext";
 import { IClasses } from "../../context/appContext.interface";
 import { storedClassesMock } from "../../context/mocks/storedClasses";
+import { ClassesContainer } from "./views/classesContainer/classesContainer";
 
 const Form = () => {
   const { classes: apiClasses, loading, error } = useClasses();
@@ -40,19 +41,18 @@ const Form = () => {
     "form__submit--active": hasSelected,
   });
 
-  const selectClass = (e: React.MouseEvent<HTMLElement>, item: IClassesData) => {
-    const clickedText = e.currentTarget.innerText;
-    const whichClass = clickedText.slice(clickedText.lastIndexOf(" ")).trim();
+  const selectClass = (GeneralItem: IClassesData, specificItem?: IClassesDataEach) => {
+    const selectedClass = GeneralItem.name;
+    const whichClass = specificItem && specificItem.whichClass ? specificItem.whichClass : "";
+
     const newClasses = classesData.map((data) => {
-      if (data.name === item.name) {
+      if (data.name === selectedClass) {
         return {
           ...data,
           classes: data.classes.map((classData) => {
-            const isClickedClass = classData.whichClass === whichClass;
-
-            if (!item.multiClass || isClickedClass) {
+            const whichClassData = classData.whichClass ?? "";
+            if (whichClassData === whichClass)
               return { ...classData, selected: !classData.selected };
-            }
 
             return classData;
           }),
@@ -100,8 +100,7 @@ const Form = () => {
       })),
     }));
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    setSelectedClasses(updatedSelecionados as any);
+    setSelectedClasses(updatedSelecionados);
   }, [classesData, setHasSelected]);
 
   useEffect(() => {
@@ -135,7 +134,7 @@ const Form = () => {
             semestres.map((item, index) => (
               <Fragment key={index}>
                 <h4 className="form__classes__subtitle">{item}</h4>
-                <div className="form__classes__container">
+                <div className="form__classes__tag__container">
                   {Array.from({ length: 9 }).map((_, i) => (
                     <ClassTag key={i} loading />
                   ))}
@@ -167,35 +166,13 @@ const Form = () => {
           {!loading &&
             classesData.length > 0 &&
             semestres.map((item, i) => (
-              <Fragment key={i}>
-                <h4 className="form__classes__subtitle">{item}</h4>
-                <div className="form__classes__container">
-                  {classesData
-                    .filter((filter) => +filter.semester === i)
-                    .map((classData, index) =>
-                      !classData.multiClass ? (
-                        <ClassTag
-                          title={classData.name}
-                          key={index}
-                          selected={classData.classes.some((cls) => cls.selected)}
-                          onClick={(e) => selectClass(e, classData)}
-                        />
-                      ) : (
-                        classData.classList &&
-                        classData.classList.map((classInfo) => (
-                          <ClassTag
-                            title={`${classData.name} ${classInfo}`}
-                            key={classInfo}
-                            selected={classData.classes.some(
-                              (cls) => cls.whichClass === classInfo && cls.selected
-                            )}
-                            onClick={(e) => selectClass(e, classData)}
-                          />
-                        ))
-                      )
-                    )}
-                </div>
-              </Fragment>
+              <ClassesContainer
+                classesData={classesData}
+                onClickTag={selectClass}
+                semestre={i}
+                title={item}
+                key={i}
+              />
             ))}
         </div>
 

@@ -1,0 +1,43 @@
+@use '../../style/variables' as var;
+
+.switcher {
+  display: flex;
+  cursor: pointer;
+  color: var.$blue-light-gray;
+  gap: 4px;
+  align-items: center;
+
+  &__input {
+    display: flex;
+    align-items: center;
+    background-color: var.$blue-dark;
+    border-radius: 50px;
+    width: 26px;
+    position: relative;
+    height: 14px;
+    transition: background-color 0.2s ease;
+
+    &--selected {
+      background-color: var.$blue-weak-emphasis;
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  &__ball {
+    position: absolute;
+    width: 11px;
+    left: 1.5px;
+    border-radius: 50%;
+    background-color: var.$blue-light-gray;
+    height: 11px;
+    transition: left 0.2s ease;
+
+    &--selected {
+      left: 13.5px;
+      background-color: var.$white;
+    }
+  }
+}

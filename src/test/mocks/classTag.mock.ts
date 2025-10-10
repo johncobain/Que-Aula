@@ -1,31 +1,31 @@
-import { IClassTag } from "../../pages/form/form.Interface";
+import { IClassTag } from "../../pages/form/views/classTag/classTag.Interface";
 import { commonTestData } from "./common.mock";
 
 export const mockClassTagPropsDefault: IClassTag = {
   selected: false,
   title: "title",
-  loading: false
+  loading: false,
 };
 
 export const mockClassTagPropsSelected: IClassTag = {
   ...mockClassTagPropsDefault,
-  selected: true
+  selected: true,
 };
 
 export const mockClassTagPropsLoading: IClassTag = {
   ...mockClassTagPropsDefault,
-  loading: true
+  loading: true,
 };
 
 export const mockClassTagPropsComplete: IClassTag = {
   title: "Complete Test",
   selected: true,
-  loading: true
+  loading: true,
 };
 
 export const mockClassTagPropsCustom = (title: string): IClassTag => ({
   ...mockClassTagPropsDefault,
-  title
+  title,
 });
 
 export const mockClassTagTitles = commonTestData.classNames;

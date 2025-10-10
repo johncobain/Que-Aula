@@ -73,7 +73,7 @@ export const Calendar = forwardRef<HTMLDivElement, ICalendar>(
           </div>
 
           {classes
-            .filter((dayItem) => checkDate(dayItem.day))
+            .filter((dayItem) => checkDate(dayItem.day!))
             .map((dayItem, id) => (
               <div key={id} className={`calendar__class calendar__class--${dayItem.day}`}>
                 <div className="calendar__class__day">

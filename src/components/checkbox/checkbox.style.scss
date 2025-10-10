@@ -1,0 +1,44 @@
+@use "../../style/variables" as var;
+
+.checkbox {
+  border: 1px solid var.$emphasis-divider-color;
+  border-radius: 2px;
+  transition: background-color 0.1s ease;
+
+  &:after {
+    content: "";
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &--selected {
+    background-color: var.$blue-light-gray;
+    position: relative;
+    border: none;
+
+    &:after {
+      opacity: 1;
+      content: "";
+      position: absolute;
+      background-size: 12px;
+      inset: 0;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url(../../assets/check.svg);
+    }
+  }
+
+  &--small {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--large {
+    width: 24px;
+    height: 24px;
+
+    &:after {
+      background-size: 16px;
+    }
+  }
+}

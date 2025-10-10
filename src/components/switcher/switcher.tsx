@@ -30,7 +30,7 @@ export const Switcher = ({ icon, label, selected = false, onClick = () => {} }: 
   }, [selected]);
 
   return (
-    <div className="switcher" onClick={handleSelect}>
+    <div className="switcher" onClick={handleSelect} data-testid="switcher">
       {icon && <img src={icon} />}
       {label && <p>{label}</p>}
       <div className={switcherInputClasses}>

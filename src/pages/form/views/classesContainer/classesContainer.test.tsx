@@ -3,7 +3,6 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { ClassesContainer } from "./classesContainer";
 import { IClassesData } from "../../../../types/dataClasses.interface";
 
-// Mock child components to isolate logic
 vi.mock("../classTag/classTag", () => ({
   ClassTag: ({ title, onClick, selected }: any) => (
     <div data-testid="class-tag" data-title={title} data-selected={selected} onClick={onClick}>
@@ -78,7 +77,7 @@ describe("ClassesContainer", () => {
           teacher: "Mary",
           classroom: "102",
           whichClass: "A",
-          selected: true, // duplicate to test filtering
+          selected: true,
         },
         {
           weekDay: "Wednesday",
@@ -113,8 +112,6 @@ describe("ClassesContainer", () => {
     vi.clearAllMocks();
   });
 
-  // --- BASIC RENDER TESTS ---
-
   it("renders class tags for the given semester when detailed=false", () => {
     render(
       <ClassesContainer
@@ -133,7 +130,6 @@ describe("ClassesContainer", () => {
     expect(tags[2]).toHaveTextContent("Science B");
   });
 
-  // --- INTERACTION TESTS ---
   it("toggles detailed view when Switcher is clicked", () => {
     render(
       <ClassesContainer
@@ -147,14 +143,11 @@ describe("ClassesContainer", () => {
 
     const switcher = screen.getByTestId("switcher");
 
-    // starts with tags
     expect(screen.queryAllByTestId("class-tag").length).toBeGreaterThan(0);
     expect(screen.queryAllByTestId("class-list-item").length).toBe(0);
 
-    // click to toggle
     fireEvent.click(switcher);
 
-    // now should show list items
     expect(screen.queryAllByTestId("class-tag").length).toBe(0);
     expect(screen.queryAllByTestId("class-list-item").length).toBeGreaterThan(0);
   });
@@ -190,7 +183,6 @@ describe("ClassesContainer", () => {
     expect(mockClick).toHaveBeenCalledWith(mockData[0]);
   });
 
-  // --- REACTIVITY TESTS ---
   it("updates when the detailed prop changes", () => {
     const { rerender } = render(
       <ClassesContainer

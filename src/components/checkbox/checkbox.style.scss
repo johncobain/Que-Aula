@@ -29,16 +29,20 @@
   }
 
   &--small {
-    width: 16px;
-    height: 16px;
+    width: 10px;
+    height: 10px;
+
+    &:after {
+      background-size: 8px;
+    }
   }
 
   &--large {
-    width: 24px;
-    height: 24px;
+    width: 16px;
+    height: 16px;
 
     &:after {
-      background-size: 16px;
+      background-size: 12px;
     }
   }
 }

@@ -21,7 +21,7 @@ export const ClassListItem = ({
 
   return (
     <div className={classListItemClasses} onClick={onClick} data-testid="class-list-item">
-      <Checkbox selected={selected} size="small" />
+      <Checkbox selected={selected} size="large" />
       <div className="form__classes__classListItem__content">
         <h4 className={classListItemTitleClasses}>
           {classCode} - {teacher} <span>{whichClass}</span>
